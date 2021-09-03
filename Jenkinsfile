@@ -1,4 +1,4 @@
-def repoName="helm_repo"
+def repoName="helm-repo"
 def repoUrl="https://ynserdgn.github.io/helm-repo/"
 def appName="charts/hello-world"
 pipeline {
@@ -20,7 +20,7 @@ pipeline {
         }
         stage('helm create index') {
             steps {
-                sh "helm repo index / --url ${repoUrl}"
+                sh "helm repo index ${repoName}/ --url ${repoUrl}"
             }
         }
         stage('Hello') {
