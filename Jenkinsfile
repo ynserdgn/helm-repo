@@ -1,8 +1,10 @@
-def repo="https://ynserdgn.github.io/helm-repo/"
+def repoName="test_helm_repo"
+def repoUrl="https://ynserdgn.github.io/helm-repo/"
+def appName="hello_world"
 pipeline {
     agent any
     stages {
-        stage("install helm"){
+       /*stage("install helm"){
             steps{
                  sh 'wget https://get.helm.sh/helm-v3.6.1-linux-amd64.tar.gz'
                  sh 'ls -a'
@@ -10,10 +12,20 @@ pipeline {
                  sh 'sudo cp linux-amd64/helm /usr/bin'
                  sh 'helm version'
             }
+        }*/
+        stage('helm package') {
+            steps {
+                sh "helm package ./${appName}"
+            }
+        }
+        stage('helm create index') {
+            steps {
+                sh "helm repo index ${repoName}/ --url ${repoUrl}"
+            }
         }
         stage('Hello') {
             steps {
-                sh "helm repo add hello-world-2 ${repo}"
+                sh "helm repo add ${repoName} ${repoUrl}"
             }
         }
     }
