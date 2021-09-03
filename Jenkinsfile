@@ -48,5 +48,12 @@ pipeline {
                 sh "helm repo add ${appName} ${repoUrl}"
             }
         }
+        
+         stage('publish Nexus Helm Repo') {
+            steps {
+                sh "curl -v -F file=@${appName}-0.1.0.tgz -u javatech:<Ankara123! http://nexus-default.apps.javatech-okd.innova.com.tr/service/rest/v1/components?repository==helm-hosted"
+            }
+        }
+        
     }
 }
