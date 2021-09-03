@@ -38,11 +38,11 @@ pipeline {
                 sh "helm package ./helm-last/${appName}"
             }
         }
-        stage('helm create index') {
+        /*stage('helm create index') {
             steps {
                 sh "helm repo index ./ --url ${repoUrl}"
             }
-        }
+        }*/
         stage('helm repo add') {
             steps {
                 sh "helm repo add ${appName} ${repoUrl}"
