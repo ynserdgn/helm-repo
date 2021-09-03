@@ -15,7 +15,7 @@ pipeline {
         }*/
         stage('helm create chart') {
             steps {
-                sh "helm lint ./helm-last/${appName}"
+                sh "helm create ./helm-last/${appName}"
             }
         }
         stage('helm Lint') {
