@@ -31,10 +31,10 @@ pipeline {
         
         stage('helm package') {
             steps {
-                sh "pwd"
+                /*sh "pwd"
                 dir('helm-last') {
                   sh "pwd"
-                }
+                }*/
                 sh "helm package ./helm-last/${appName}"
             }
         }
