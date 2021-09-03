@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Hello') {
             steps {
-                sh "helm repo add hello-world ${repo}"
+                sh "helm repo add hello-world-2 ${repo}"
             }
         }
     }
