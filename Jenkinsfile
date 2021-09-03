@@ -1,6 +1,6 @@
 def repoName="test_helm_repo"
 def repoUrl="https://ynserdgn.github.io/helm-repo/"
-def appName="helm-repo"
+def appName="charts/hello_world"
 pipeline {
     agent any
     stages {
