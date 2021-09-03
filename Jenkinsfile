@@ -51,7 +51,7 @@ pipeline {
         
          stage('publish Nexus Helm Repo') {
             steps {
-                sh "curl -v -F file=@${appName}-0.1.0.tgz -u javatech:Ankara123! http://nexus-default.apps.javatech-okd.innova.com.tr/repository/nexus-helm-hosted/"
+                sh "curl -u javatech:Ankara123! http://nexus-default.apps.javatech-okd.innova.com.tr/repository/nexus-helm-hosted/ --upload-file ${appName}-0.1.0.tgz -v"
             }
         }
         
