@@ -1,4 +1,4 @@
-def repoName="last_repo"
+
 def repoUrl="https://ynserdgn.github.io/helm-repo/"
 def appName="hello-world"
 pipeline {
