@@ -20,7 +20,7 @@ pipeline {
         }
         stage('helm create index') {
             steps {
-                sh "helm repo index hello-world/ --url ${repoUrl}"
+                sh "helm repo index / --url ${repoUrl}"
             }
         }
         stage('Hello') {
