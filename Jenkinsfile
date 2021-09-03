@@ -15,17 +15,17 @@ pipeline {
         }*/
         stage('helm create chart') {
             steps {
-                sh "helm create ./helm-last/${appName}"
+                sh "helm create ./charts/${appName}"
             }
         }
         stage('helm Lint') {
             steps {
-                sh "helm lint ./helm-last/${appName}"
+                sh "helm lint ./charts/${appName}"
             }
         }
         stage('helm template') {
             steps {
-                sh "helm template ./helm-last/${appName}"
+                sh "helm template ./charts/${appName}"
             }
         }
         
@@ -35,7 +35,7 @@ pipeline {
                 dir('helm-last') {
                   sh "pwd"
                 }*/
-                sh "helm package ./helm-last/${appName}"
+                sh "helm package ./charts/${appName}"
             }
         }
         /*stage('helm create index') {
