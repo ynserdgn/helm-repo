@@ -35,7 +35,7 @@ pipeline {
                 dir('helm-last') {
                   sh "pwd"
                 }*/
-                sh "helm package ./helm-last/${appName}"
+                sh "helm package .helm-last/helm-last/${appName}"
             }
         }
         stage('helm create index') {
