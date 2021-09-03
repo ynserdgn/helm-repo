@@ -40,12 +40,12 @@ pipeline {
         }
         stage('helm create index') {
             steps {
-                sh "helm repo index ${repoName} --url ${repoUrl}"
+                sh "helm repo index ./ --url ${repoUrl}"
             }
         }
         stage('helm repo add') {
             steps {
-                sh "helm repo add ${repoName} ${repoUrl}"
+                sh "helm repo add ${appName} ${repoUrl}"
             }
         }
     }
