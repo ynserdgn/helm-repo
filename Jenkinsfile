@@ -1,6 +1,6 @@
-def repoName=""
+def repoName="last_repo"
 def repoUrl="https://ynserdgn.github.io/helm-repo/"
-def appName="charts/hello-world"
+def appName="hello-world"
 pipeline {
     agent any
     stages {
@@ -13,9 +13,21 @@ pipeline {
                  sh 'helm version'
             }
         }*/
+        
+        stage('helm Lint') {
+            steps {
+                sh "helm lint ./helm-last/${appName}"
+            }
+        }
+        stage('helm template') {
+            steps {
+                sh "helm template ./helm-last/${appName}"
+            }
+        }
+        
         stage('helm package') {
             steps {
-                sh "helm package ./${appName}"
+                sh "helm package ./helm-last/${appName}"
             }
         }
         stage('helm create index') {
@@ -23,7 +35,7 @@ pipeline {
                 sh "helm repo index ${repoName}/ --url ${repoUrl}"
             }
         }
-        stage('Hello') {
+        stage('helm repo add') {
             steps {
                 sh "helm repo add ${repoName} ${repoUrl}"
             }
